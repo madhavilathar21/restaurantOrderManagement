@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BhukkadModelStoreContainer" CdmEntityContainer="BhukkadEntities">
+    <EntitySetMapping Name="AdminMasters">
+      <EntityTypeMapping TypeName="BhukkadModel.AdminMaster">
+        <MappingFragment StoreEntitySet="AdminMaster">
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookingMasters">
+      <EntityTypeMapping TypeName="BhukkadModel.BookingMaster">
+        <MappingFragment StoreEntitySet="BookingMaster">
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EAddress" ColumnName="EAddress" />
+          <ScalarProperty Name="EDate" ColumnName="EDate" />
+          <ScalarProperty Name="ECallTime" ColumnName="ECallTime" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CPhone" ColumnName="CPhone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

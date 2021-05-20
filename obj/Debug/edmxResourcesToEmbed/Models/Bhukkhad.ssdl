@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BhukkhadModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminMaster">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varbinary" MaxLength="50" />
+    <Property Name="Password" Type="varbinary" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BookingMaster">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="EAddress" Type="varchar" MaxLength="50" />
+    <Property Name="EDate" Type="varchar" MaxLength="50" />
+    <Property Name="ECallTime" Type="varchar" MaxLength="50" />
+    <Property Name="CName" Type="varchar" MaxLength="50" />
+    <Property Name="CPhone" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="BhukkhadModelStoreContainer">
+    <EntitySet Name="AdminMaster" EntityType="Self.AdminMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookingMaster" EntityType="Self.BookingMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

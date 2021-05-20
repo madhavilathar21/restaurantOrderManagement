@@ -1,0 +1,306 @@
+﻿
+@{
+    ViewBag.Title = "Bhukkad-EaterBookMe";
+    Layout = "~/Views/Shared/_EaterLayout.cshtml";
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $('input[type=text],textarea').blur(function (e) {
+            this.style.background = "white";
+        });
+    });
+    $(function () {
+        $('input[type=text],textarea').focus(function (e) {
+            this.style.background = "mediumturquoise";
+        });
+    });
+
+    $(function () {
+        $("input[type=text]").first().focus();
+
+        $("input").addClass("txtbx");
+    });
+
+
+    $(function () {
+        $('input[type=password]').blur(function (e) {
+            this.style.background = "white";
+        });
+    });
+    $(function () {
+        $('input[type=password]').focus(function (e) {
+            this.style.background = "mediumturquoise";
+        });
+    });
+    function namefocus() {
+
+        document.getElementById("Name").focus();
+
+    }
+</script>
+
+
+
+@using (Html.BeginForm("EaterBookMe", "Eater", FormMethod.Post, new { id = "bmval" }))
+{
+    <table style="width:100%; " class="text">
+        <tr style="height:30px;">
+            <td colspan="2" style="text-align:left; font-family:'AR HERMANN'; background-color:mediumturquoise; color:white; font-size:25px;">
+                Bookme Form
+            </td>
+        </tr>
+        <tr style="height:5px">
+            <td colspan="2" style="background-color:mediumturquoise;"></td>
+        </tr>
+        <tr>
+            <td style="text-align:center;">
+                <table style="width:100%;color:orangered;" class="text">
+                    <tr style="height:15px;">
+                        <td colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:mediumturquoise;">
+                            Name <span style="color:mediumturquoise;">*</span>
+                        </td>
+                        <td style="text-align:center; color:mediumturquoise;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBox("Name", "", new { id = "Name" }) </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:mediumturquoise;">
+                            Address <span style="color:mediumturquoise;">*</span>
+                        </td>
+                        <td style="text-align:center; color:mediumturquoise;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextArea("EAddress", "", 2, 20, new { id = "EAddress", @class = "txtbx" })</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:mediumturquoise;">
+                            Date Of Event <span style="color:mediumturquoise;">*</span>
+                        </td>
+                        <td style="text-align:center; color:mediumturquoise;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBox("EDate", "", new { id = "EDate" }) </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:mediumturquoise;">
+                            Call Time <span style="color:mediumturquoise;">*</span>
+                        </td>
+                        <td style="text-align:center; color:mediumturquoise;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBox("ECallTime", "", new { id = "ECallTime" }) </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align:left;color:mediumturquoise;">
+                            Contact Phone <span style="color:mediumturquoise;">*</span>
+                        </td>
+                        <td style="text-align:center;color:mediumturquoise;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBox("CPhone", "", new { id = "CPhone" })</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;color:mediumturquoise;">
+                            Email <span style="color:mediumturquoise;">*</span>
+                        </td>
+                        <td style="text-align:center; color:mediumturquoise;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div>   @Html.TextBox("Email", "", new { id = "Email" })   </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+
+            <td>
+                <table style="width:100%;">
+                    <tr style="height:80px;">
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+
+                            <table style="width:100%; color:orangered; border-color:mediumturquoise; border-style:solid; border-width:thick;" class="text">
+
+                                <tr>
+                                    <td colspan="3" style="text-align:left; font-size:25px; background-color:mediumturquoise; color:White;">
+                                        Email & Password
+                                    </td>
+                                </tr>
+                                <tr style="height:5px;">
+                                    <td colspan="3"></td>
+                                </tr>
+
+                                <tr>
+                                    <td style="text-align:left; color:mediumturquoise;">
+                                        Password <span style="color:mediumturquoise;">*</span>
+                                    </td>
+                                    <td style="text-align:center; color:mediumturquoise;">
+                                        :
+                                    </td>
+                                    <td style="text-align:left;">
+                                        <div>  @Html.Password("Password", "", new { id = "Password" })</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left; color:mediumturquoise;">
+                                        Confirm Password <span style="color:mediumturquoise;">*</span>
+                                    </td>
+                                    <td style="text-align:center; color:mediumturquoise;">
+                                        :
+                                    </td>
+                                    <td style="text-align:left;">
+                                        <div> @Html.Password("CPasswd", "", new { id = "CPasswd" }) </div>
+                                    </td>
+                                </tr>
+                                <tr style="height:5px;">
+                                    <td colspan="3"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr style="height:5px;">
+                        <td colspan="2"></td>
+                    </tr>
+
+                    <tr style="height:25px;">
+                        <td style="color:mediumturquoise; width:100px;">
+                            by clicking BookMe you agree to our @Html.ActionLink("Policy", "EaterPolicy", "Eater", new { id = "Policy", @style = "color:yellow;" })
+                        </td>
+                        <td style="text-align:left;" class="btn">
+                            <input type="submit" id="submit" value="Book Me" style="color:mediumturquoise; width:150px; background-color:white;" />
+                            &nbsp;&nbsp;
+                            <input id="btnReset" type="reset" value="Reset" style="color:mediumturquoise; width:150px;  background-color:white;" onclick="namefocus()" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+}
+
+@section bmValidation
+{
+
+    <script type="text/javascript">
+        //following is called jquery validation plugin
+        $(document).ready(function(){
+
+            $("#bmval").validate({
+
+                rules: {
+                    Name: "required",
+
+                    EAddress: {
+                        required: true
+                    },
+                    EDate: {
+                        required: true
+                    },
+                    ECallTime: {
+                        required: true
+                    },
+                    CName: {
+                        required: true
+                    },
+                    CPhone: {
+                        required: true,
+                        number: true
+                    },
+                    Email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            url: '@Url.Action("CheckEmail","Eater")',
+                            data: {
+                                'Email': function () {
+                                    return $("#Email").val();
+                                }
+                            }
+                        }
+                    },
+                    Password:{
+                        required:true
+                    },
+                    CPasswd: {
+                        required: true,
+                        equalTo: "#Password"
+                    }
+                },
+                messages: {
+                    Name: {
+                        required: 'Please Enter FirstName',
+                        focus() { }
+                    },
+                    EAddress: {
+                        required: 'Please Enter Event Address',
+                        focus() { }
+                    },
+                    EDate:{
+                        required: 'Please Enter Date of Event',
+                        focus() { }
+                    },
+                    ECallTime: {
+                        required: 'Please Enter Call Time of Event',
+                        focus() { }
+                    },
+                    CName: {
+                        required: 'Please Enter Name of Contact',
+                        focus() { }
+                    },
+                    CPhone: {
+                        required: 'Please Enter Phone',
+                        number: 'Please Enter Numeric value',
+                        focus() { }
+                    },
+                    Email: {
+                        required: 'Please Enter Email Address',
+                        email: 'please entern valid email address',
+                        remote:'Email Id Already Exist',
+                        focus() { }
+                    },
+                    Password:{
+                        required: 'Please Enter Password',
+                        focus() { }
+                    },
+                    CPasswd: {
+                        required: 'Please Enter Confirm Password',
+                        equalTo: "Password and Confirm Password do not match",
+                        focus() { }
+                    }
+                },
+                errorPlacement:function(error,element){
+                    error.insertAfter(element.parent());
+                }
+            })
+
+        });
+
+
+
+    </script>
+
+}
+
+

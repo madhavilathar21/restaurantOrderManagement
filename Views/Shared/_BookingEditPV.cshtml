@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Bhukkhad.Models.BookingMaster>
+
+
+<script type="text/javascript">
+
+    function DeleteBooking(BookId) {
+        $.ajax({
+            datatype: 'json',
+            type: 'post',
+            data: { BookId: BookId },
+            url: '@Url.Action("DeleteItem","Admin")',
+            success: function (item) {
+                if (item.toString() == "Success") {
+                    alert('Record deleted successfully'),
+                    window.location.href = '@Url.Action("AdminUpdateBooking","Admin")';
+                }
+                else {
+                    alert('Error');
+                }
+            },
+            error: function (item) {
+                $('#ErrMsg').text(item.toString());
+            }
+        });
+    }
+
+
+</script>
+
+
+
+<table class="text" style="font-size:15px; border-width:0px;" cellpadding="5" cellspacing="10" border="1">
+    <thead>
+        <tr style="color:red;">
+            <th width="50px">BookId</th>
+            <th width="50px">Name</th>
+            <th width="50px">EAddress</th>
+            <th width="50px">EDate</th>
+            <th width="50px">ECallTime</th>
+            <th width="50px">CName</th>
+            <th width="50px">CPhone</th>
+            <th width="50px">Email</th>
+            <th width="50px">Edit</th>
+            <th width="50px">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var booking in Model)
+        {
+            <tr style="color:green;">
+                <td>@booking.BookId</td>
+                <td>@booking.Name</td>
+                <td>@booking.EAddress</td>
+                <td>@booking.EDate</td>
+                <td>@booking.ECallTime</td>
+                <td>@booking.CName</td>
+                <td>@booking.CPhone</td>
+                <td>@booking.Email</td>
+                <td>
+                    <input type="button" value="Edit" style="width:70px; height:20px;" onclick="@("window.location.href='" + @Url.Action("AdminEditBooking", "Admin", new {booking.BookId}) + "'");">
+                </td>
+                <td>
+                    <input type="button" value="Delete" onclick="DeleteBooking(@booking.BookId)">
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<table>
+    <tr>
+        @using (Html.BeginForm("AdminBookme", "Admin", FormMethod.Post, new { id = "bmval" }))
+        {
+            <td>
+                @Html.TextBox("Name", "", new { id = "Name", style = "width:100px;", Placeholder = "Name" })
+            </td>
+            <td>
+                @Html.TextBox("EAddress", "", new { id = "EAddress", style = "width:150px;", Placeholder = "Event Address" })
+            </td>
+            <td>
+                @Html.TextBox("EDate", "", new { id = "EDate", style = "width:100px;", Placeholder = "Event Date" })
+            </td>
+            <td>
+                @Html.TextBox("ECallTime", "", new { id = "ECallTime", style = "width:100px;", Placeholder = "CallTime" })
+            </td>
+            <td>
+                @Html.TextBox("CName", "", new { id = "CName", style = "width:100px;", Placeholder = "Contact Name" })
+            </td>
+            <td>
+                @Html.TextBox("CPhone", "", new { id = "CPhone", style = "width:100px;", Placeholder = "Contact Phone" })
+            </td>
+            <td>
+                @Html.TextBox("Email", "", new { id = "Email", style = "width:150px;", Placeholder = "Email-Id" })
+            </td>
+            <td>
+                @Html.TextBox("Password", "", new { id = "Password", style = "width:150px;", Placeholder = "Password" })
+            </td>
+            <td>
+                <button type="submit" id="submit">Insert</button>
+            </td>
+
+
+        }
+    </tr>
+</table>
+
+

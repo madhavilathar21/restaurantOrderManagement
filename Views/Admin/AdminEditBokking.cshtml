@@ -1,0 +1,245 @@
+﻿@model Bhukkhad.Models.BookingMaster
+
+@{
+    ViewBag.Title = "AdminEditBokking";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+        $('input[type=text],textarea').blur(function (e) {
+            this.style.background = "white";
+        });
+    });
+    $(function () {
+        $('input[type=text],textarea').focus(function (e) {
+            this.style.background = "khaki";
+        });
+    });
+
+    $(function () {
+        $("input[type=text]").first().focus();
+
+        $("input").addClass("txtbx");
+    });
+
+    $(function () {
+        $('input[type=password]').blur(function (e) {
+            this.style.background = "white";
+        });
+    });
+    $(function () {
+        $('input[type=password]').focus(function (e) {
+            this.style.background = "khaki";
+        });
+    });
+    function namefocus() {
+
+        document.getElementById("Name").focus();
+
+    }
+</script>
+
+
+
+@using (Html.BeginForm("AdminEditBooking", "Admin", FormMethod.Post, new { id = "upval" }))
+{
+    <table style="width:100%; " class="text">
+        <tr style="height:30px;">
+            <td colspan="2" style="text-align:left; font-family:'AR HERMANN'; background-color:khaki; color:black; font-size:25px;">
+                Admin Edit Booking
+            </td>
+        </tr>
+        <tr style="height:5px">
+            <td colspan="2" style="background-color:khaki;"></td>
+        </tr>
+        <tr>
+            <td style="text-align:center; width:40%;">
+                <table style="color:orangered;" class="text">
+                    <tr style="height:10px;">
+                        <td colspan="3"></td>
+                    </tr>
+
+                    @Html.HiddenFor(m => m.BookId, new { id = "BookID" })
+                    <tr>
+                        <td style="text-align:left; color:black;">
+                            Name <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center; color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBoxFor(m => Model.Name, new { id = "Name" }) </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:black;">
+                            Address <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center; color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextArea("EAddress", Model.EAddress, 2, 20, new { id = "EAddress", @class = "txtbx" })</div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:black;">
+                            Date Of Event <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center; color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div>   <input type="text" id="EDate" name="EDate" value="@Model.EDate" /></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:black;">
+                            Call Time <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center; color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBox("ECallTime", Model.ECallTime, new { id = "ECallTime" }) </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left; color:black;">
+                            Contact Name <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center; color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBoxFor(m => Model.CName, new { id = "CName" })</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;color:black;">
+                            Contact Phone <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center;color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div> @Html.TextBox("CPhone", Model.CPhone, new { id = "CPhone" })</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:left;color:black;">
+                            Email <span style="color:black;">*</span>
+                        </td>
+                        <td style="text-align:center; color:black;">
+                            :
+                        </td>
+                        <td style="text-align:left;">
+                            <div>   @Html.TextBox("Email", Model.Email, new { id = "Email" })   </div>
+                        </td>
+                    </tr>
+                    <tr style="height:5px;">
+                        <td colspan="3"></td>
+                    </tr>
+
+                    <tr style="height:25px;">
+                        <td colspan="2"></td>
+                        <td style="text-align:center;" class="btn">
+                            <input type="submit" id="submit" value="Update" style="color:black; width:100px; background-color:khaki;" />
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+            <td width="60%" align="center" style="color:khaki; font-family:Arial; font-size:100px;">
+                Compact
+            </td>
+        </tr>
+        <tr style="height:5px">
+            <td colspan="2" style="background-color:khaki;"></td>
+        </tr>
+        <tr style="height:5px">
+            <td colspan="2" style="background-color:khaki;"></td>
+        </tr>
+
+    </table>
+
+
+
+
+
+}
+
+@section myValidation
+{
+
+
+    <script type="text/javascript">
+        //following is called jquery validation plugin
+        $(document).ready(function(){
+
+            $("#upval").validate({
+
+                rules: {
+                    Name: "required",
+                    EAddress: {
+                        required: true
+                    },
+                    EDate: {
+                        required: true
+                    },
+                    ECallTime: {
+                        required: true
+                    },
+                    CName: {
+                        required: true
+                    },
+                    CPhone: {
+                        required: true,
+                        number: true
+                    },
+                    Email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    Name: {
+                        required: 'Please Enter FirstName',
+            },
+                EAddress: {
+                required: 'Please Enter Event Address',
+                },
+            EDate:{
+                required: 'Please Enter Date of Event',
+            },
+            ECallTime: {
+                required: 'Please Enter Call Time of Event',
+            },
+            CName: {
+                required: 'Please Enter Name of Contact',
+            },
+            CPhone: {
+                required: 'Please Enter Phone',
+                number: 'Please Enter Numeric value',
+            },
+            Email: {
+                required: 'Please Enter Email Address',
+                email: 'please entern valid email address',
+                remote:'Email Id Already Exist',
+            }
+        },
+            errorPlacement:function(error,element){
+                error.insertAfter(element.parent());
+            }
+        })
+
+        });
+    </script>
+}
+
+
+
+
